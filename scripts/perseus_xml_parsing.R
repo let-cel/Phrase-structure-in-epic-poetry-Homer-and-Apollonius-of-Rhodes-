@@ -4,7 +4,7 @@ library(purrr)
 library(udpipe)
 library(tidyr)
 library(stringr)
-library(ggplot2)
+
 
 doc_p <- xmlTreeParse("Iliad_Perseus.xml", useInternalNodes = T)
 
