@@ -1,12 +1,10 @@
 library(XML)
 library(dplyr)
 library(purrr)
-library(udpipe)
-library(tidyr)
 library(stringr)
 
-
-doc_p <- xmlTreeParse("Iliad_Perseus.xml", useInternalNodes = T)
+url <- "XML/Iliad_perseus_fixed.xml"
+doc_p <- xmlTreeParse(url, useInternalNodes = T)
 
 # get rootnode
 rootnode <- xmlRoot(doc_p)
