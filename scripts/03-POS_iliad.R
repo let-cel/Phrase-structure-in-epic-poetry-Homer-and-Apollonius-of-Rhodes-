@@ -36,7 +36,7 @@ iliad_joined <- pers_tokens %>%
  mutate(pos = iliad_dior$pos,
         word_d = iliad_dior$word)
 
-save(iliad_joined, file = "./data/iliad_joined.Rdata")
+#save(iliad_joined, file = "./data/iliad_joined.Rdata")
 
 # collapse pos
 iliad_pos <- iliad_joined %>% 
@@ -44,6 +44,6 @@ iliad_pos <- iliad_joined %>%
   mutate(pos_line = str_c(pos, collapse = " ")) %>% 
   distinct(book, line_nr, pos_line)
 
-save(iliad_pos, file = "./data/iliad_pos.Rdata")
+#save(iliad_pos, file = "./data/iliad_pos.Rdata")
 
 # 
