@@ -1,4 +1,9 @@
-doc_d <- xmlTreeParse("Iliad_Diorisis.xml", useInternalNodes = T)
+library(XML)
+library(dplyr)
+library(purrr)
+
+url <- "./XML/Iliad_dior.xml"
+doc_d <- xmlTreeParse(url, useInternalNodes = T)
 
 # get rootnode
 rootnode <- xmlRoot(doc_d)
@@ -9,9 +14,10 @@ word_nodes <- getNodeSet(rootnode,
                          "//word", 
                          namespaces = c(tei = ns))
 
-word = map(word_nodes, xmlGetAttr, "form") %>% as.character()
-location <- map(word_nodes, ~xmlGetAttr(xmlParent(.), "location")) %>% as.character()
-
+word <-  map(word_nodes, xmlGetAttr, "form") %>% 
+  as.character()
+location <- map(word_nodes, ~xmlGetAttr(xmlParent(.), "location")) %>% 
+  as.character()
 
 lemma_nodes <- map(word_nodes, ~xmlChildren(.)$lemma)
 pos <-  map(lemma_nodes, xmlGetAttr, "POS") %>% as.character()
