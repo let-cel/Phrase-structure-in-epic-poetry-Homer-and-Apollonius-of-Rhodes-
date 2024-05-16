@@ -1,5 +1,5 @@
-> load("~/Phrase-structure-in-epic-poetry-Homer-and-Apollonius-of-Rhodes-/data/Argo_dior_tokens.Rdata")
-> load("~/Phrase-structure-in-epic-poetry-Homer-and-Apollonius-of-Rhodes-/data/Argo_pers_tokens.Rdata")
+load("./data/Argo_dior_tokens.Rdata")
+load("./data/Argo_pers_tokens.Rdata")
 
 
 #get rid of NA-lines in Argonautica
