@@ -138,8 +138,7 @@ Argo_joined <- Argo_pers_tokens %>%
 ##get part of speech
 
 Argo_pos <- Argo_joined %>%
-  group_by(line) %>%
+  group_by(line_nr) %>%
   mutate(pos_line = str_c(pos, collapse = " ")) %>%
-  distinct(title, line, pos_line)
-# error here!!!!
+  distinct(title, line_nr, pos_line)
 
