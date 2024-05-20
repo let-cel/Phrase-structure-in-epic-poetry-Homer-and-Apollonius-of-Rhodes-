@@ -129,16 +129,17 @@ Argo_dior_corr4 <- Argo_dior_corr3 %>%
   mutate(pos = case_when(pos == "NULL" ~ pos_corr, .default = pos)) %>%
   select(-word_u, -pos_corr)
 
-##Соединяем две таблицы
-Argo_joined <- Argo_pers_tokens %>% 
+##Соединяем две таблицы и избавляемся от NA-строк
+Argo_joined <- Argo_pers_tokens %>%
+  unite(line, c("book", "line_nr")) %>%
   mutate(pos = Argo_dior_corr4$pos,
-         word_d = Argo_dior_corr4$word)
-
+         word_d = Argo_dior_corr4$word) %>%
+  mutate(pos = case_when(is.na(pos) ~ "NULL", .default = pos))
 
 ##get part of speech
 
 Argo_pos <- Argo_joined %>%
-  group_by(line_nr) %>%
+  group_by(line) %>%
   mutate(pos_line = str_c(pos, collapse = " ")) %>%
-  distinct(title, line_nr, pos_line)
+  distinct(title, line, pos_line)
 
